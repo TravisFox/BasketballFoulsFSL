@@ -1,0 +1,36 @@
+
+machine_name     : "US Basketball Fouls";
+machine_author   : "Travis Fox / @TravisFox";
+machine_comment  : "Mapping of fouls in basketball.  Does not cover flagrant or double-technical fouls.";
+machine_license  : MIT;
+machine_language : en;
+machine_version  : 1.0.0;
+fsl_version      : 1.0.0;
+
+
+
+
+
+Team1Control 'Team1Foul' -> Team2Control;
+Team2Control 'Team2Foul' -> Team1Control;
+
+Team1Control 'Team2ShootingFoulOnMiss' -> Team1_TwoFreeThrows -> Team2Control;
+Team2Control 'Team1ShootingFoulOnMiss' -> Team2_TwoFreeThrows -> Team1Control;
+
+Team1Control 'Team2ShootingFoulOnMissOutside3ptLine' -> Team1_ThreeFreeThrows -> Team2Control;
+Team2Control 'Team1ShootingFoulOnMissOutside3ptLine' -> Team2_ThreeFreeThrows -> Team1Control;
+
+[Team1Control Team2Control] 'Team1TechFoul' -> Team2_1FreeShot_KeepControl -> Team2Control;
+[Team1Control Team2Control] 'Team2TechFoul' -> Team1_1FreeShot_KeepControl -> Team1Control;
+
+Team1Control 'Team2ShootingFoulOnMake' -> Team1_OneFreeThrow -> Team2Control;
+Team2Control 'Team1ShootingFoulOnMake' -> Team2_OneFreeThrow -> Team1Control;
+
+Team1Control 'Team2FoulBonus' -> Team1_OneAndOne 'MakeShot' -> Team1_OneAndOneExtra -> Team2Control;
+                                 Team1_OneAndOne 'MissShot' -> Team2Control;
+
+Team2Control 'Team1FoulBonus' -> Team2_OneAndOne 'MakeShot' -> Team2_OneAndOneExtra -> Team1Control;
+                                 Team2_OneAndOne 'MissShot' -> Team1Control;
+
+Team1Control 'Team2FoulDoubleBonus' -> Team1_DoubleBonus_TwoFreeThrows -> Team2Control;
+Team2Control 'Team1FoulDoubleBonus' -> Team2_DoubleBonus_TwoFreeThrows -> Team1Control;
