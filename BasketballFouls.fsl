@@ -1,7 +1,7 @@
 
 machine_name     : "US Basketball Fouls";
 machine_author   : "Travis Fox / @TravisFox";
-machine_comment  : "Mapping of fouls in basketball.  Does not cover flagrant or double-technical fouls.";
+machine_comment  : "Mapping of fouls in basketball.  Does not cover double-technical fouls.";
 machine_license  : MIT;
 machine_language : en;
 machine_version  : 1.0.0;
