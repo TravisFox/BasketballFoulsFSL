@@ -34,3 +34,6 @@ Team2Control 'Team1FoulBonus' -> Team2_OneAndOne 'MakeShot' -> Team2_OneAndOneEx
 
 Team1Control 'Team2FoulDoubleBonus' -> Team1_DoubleBonus_TwoFreeThrows -> Team2Control;
 Team2Control 'Team1FoulDoubleBonus' -> Team2_DoubleBonus_TwoFreeThrows -> Team1Control;
+
+Team1Control 'Team2FlagrantFoul' -> Team1_TwoFlagrantFreeThrows -> Team1Control;
+Team2Control 'Team1FlagrantFoul' -> Team2_TwoFlagrantFreeThrows -> Team2Control;
